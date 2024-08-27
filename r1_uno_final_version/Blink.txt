@@ -1,0 +1,34 @@
+#define stepPin1 6
+#define dirPin1 7
+
+#define stepPin2 8
+#define dirPin2 9
+
+#define stepPin3 10
+#define dirPin3 11
+ 
+void setup() {
+  // Sets the two pins as Outputs
+  pinMode(stepPin1,OUTPUT); 
+  pinMode(dirPin1,OUTPUT);
+  pinMode(stepPin2,OUTPUT); 
+  pinMode(dirPin2,OUTPUT);
+  pinMode(stepPin3,OUTPUT); 
+  pinMode(dirPin3,OUTPUT);
+}
+void loop() {
+  digitalWrite(dirPin1,0);
+  digitalWrite(dirPin2,0); // Enables the motor to move in a particular direction
+  // Makes 200 pulses for making one full cycle rotation
+  for(int x = 0; x < 500; x++) {
+    digitalWrite(stepPin1,HIGH); 
+    digitalWrite(stepPin2,HIGH);
+    digitalWrite(stepPin3,HIGH);
+    delayMicroseconds(700);    // by changing this time delay between the steps we can change the rotation speed
+    digitalWrite(stepPin1,LOW); 
+    digitalWrite(stepPin2,LOW);
+    digitalWrite(stepPin3,LOW); 
+    delayMicroseconds(700); 
+  }
+  delay(1000); // One second delay
+}
